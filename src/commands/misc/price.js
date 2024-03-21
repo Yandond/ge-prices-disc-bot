@@ -19,7 +19,6 @@ module.exports = {
         try {
             const targetItem = interaction.options.getString('target-item');
             const itemData = searchByName(targetItem); // Assuming searchByName returns an object with item data
-            console.log('itemData:', itemData);
             if (!itemData || !itemData.id) {
                 return interaction.reply(`${targetItem} not found or price data unavailable.`);
             }
@@ -27,7 +26,6 @@ module.exports = {
             const url = `https://www.ge-tracker.com/api/items/${targetId}`;
             const response = await fetch(url);
             const responseData = await response.json();
-            console.log(responseData)
             if (responseData && responseData.data) {
                 const embed = new EmbedBuilder()
                     .setColor('#0099ff')
