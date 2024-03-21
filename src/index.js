@@ -1,7 +1,7 @@
 require('dotenv').config();
 const { Client, IntentsBitField } = require('discord.js');
 const eventHandler = require('./handlers/eventHandler');
-
+const keepAlive = require('./keepAlive');
 const client = new Client({
   intents: [
     IntentsBitField.Flags.Guilds,
@@ -14,3 +14,4 @@ const client = new Client({
 eventHandler(client);
 
 client.login(process.env.TOKEN);
+keepAlive()
